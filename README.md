@@ -31,4 +31,4 @@ $ vagrant up
 $ ansible-playbook mesos.yml
 ```
 
-You can read a little bit more [here](https://www.mendrugory.com/post/mesos-local-development)
+You can read a little bit more [here](https://www.mendrugory.com/post/mesos-local-development).

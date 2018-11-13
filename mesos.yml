@@ -1,14 +1,14 @@
 ---
 # Installing Mesosphere package in 3 nodes
 
-# - name: Installing Mesosphere package in server 1
-#   hosts: mesos1
-#   become: yes
-#   roles:
-#     - role: mesosphere
-#       myid: 1
-#       quorum: 2
-#       ip: "{{ hostvars[groups['mesos'][0]].ansible_host }}"
+- name: Installing Mesosphere package in server 1
+  hosts: mesos1
+  become: yes
+  roles:
+    - role: mesosphere
+      myid: 1
+      quorum: 2
+      ip: "{{ hostvars[groups['mesos'][0]].ansible_host }}"
 
 - name: Installing Mesosphere package in server 2
   hosts: mesos2
