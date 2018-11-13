@@ -1,0 +1,3 @@
+export MARATHON_MASTER="zk://{{ mesos_server_1 }}:2181,{{ mesos_server_2 }}:2181,{{ mesos_server_3 }}:2181/mesos"
+export MARATHON_ZK="zk://{{ marathon_server_1 }}:2181,{{ marathon_server_2 }}:2181,{{ marathon_server_3 }}:2181/marathon"
+export MARATHON_HOSTNAME="{{ ip }}"

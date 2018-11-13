@@ -1,0 +1,14 @@
+---
+# Stop mesos, marathon and zookeeper services
+
+- name: Stopping Zookeeper
+  service: name=zookeeper state=stopped
+
+- name: Stopping Mesos Master
+  service: name=mesos-master state=stopped
+
+- name: Stopping Marathon
+  service: name=marathon state=stopped    
+  
+- name: Stopping Mesos Slave
+  service: name=mesos-slave state=stopped  

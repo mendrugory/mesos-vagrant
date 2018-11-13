@@ -1,0 +1,26 @@
+---
+# Mesosphere package installation
+
+- name: Add Java repo
+  apt_repository: repo='ppa:webupd8team/java' codename=trusty
+
+- name: Add apt key mesosphere
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: E56151BF
+
+- name: Add Repo mesosphere
+  apt_repository: repo='deb http://repos.mesosphere.io/ubuntu trusty main' state=present update_cache=yes
+
+- name: Accept Java 8 License
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: Install Java 8
+  apt: name={{item}} state=latest
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default
+
+- name: Install Mesosphere
+  apt: name=mesosphere update_cache=yes   

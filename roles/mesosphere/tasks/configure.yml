@@ -1,0 +1,38 @@
+---
+# File configuration
+
+- name: Zookeeper connection for mesos
+  template: src=mesos/zk.j2 dest=/etc/mesos/zk
+
+- name: Zookeeper myid
+  template: src=mesos_master/myid.j2 dest=/etc/zookeeper/conf/myid
+
+- name: Zookeeper conf for master servers
+  template: src=mesos_master/zoo.cfg.j2 dest=/etc/zookeeper/conf/zoo.cfg 
+
+- name: Mesos Master quorum
+  template: src=mesos_master/quorum.j2 dest=/etc/mesos-master/quorum 
+
+- name: Mesos Master IP
+  template: src=mesos_master/ip.j2 dest=/etc/mesos-master/ip 
+
+- name: Mesos Master Hostname
+  template: src=mesos_master/ip.j2 dest=/etc/mesos-master/hostname   
+
+- name: Marathon Configuration
+  template: src=marathon/marathon.j2 dest=/etc/default/marathon
+
+- name: Mesos Slave IP
+  template: src=mesos_slave/ip.j2 dest=/etc/mesos-slave/ip 
+
+- name: Mesos Slave containers
+  copy: src=mesos_slave/containerizers   dest=/etc/mesos-slave/containerizers
+
+- name: Mesos Slave download time
+  copy: src=mesos_slave/executor_registration_timeout   dest=/etc/mesos-slave/executor_registration_timeout
+
+- name: Zookeeper folder permissions
+  file: path=/etc/zookeeper/conf_example mode=0777 state=directory recurse=yes
+
+- name: Hosts
+  template: src=hosts.j2 dest=/etc/hosts

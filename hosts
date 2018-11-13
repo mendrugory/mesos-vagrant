@@ -1,0 +1,4 @@
+[mesos]
+mesos1 ansible_host=192.168.33.11 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/mesos1/virtualbox/private_key
+mesos2 ansible_host=192.168.33.12 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/mesos2/virtualbox/private_key
+mesos3 ansible_host=192.168.33.13 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/mesos3/virtualbox/private_key

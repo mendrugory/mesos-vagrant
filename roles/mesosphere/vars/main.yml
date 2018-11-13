@@ -1,0 +1,12 @@
+---
+# vars file for mesosphere
+
+mesos_server_1: "{{ hostvars[groups['mesos'][0]].ansible_host }}"
+mesos_server_2: "{{ hostvars[groups['mesos'][1]].ansible_host }}"
+mesos_server_3: "{{ hostvars[groups['mesos'][2]].ansible_host }}"
+marathon_server_1: "{{ hostvars[groups['mesos'][0]].ansible_host }}"
+marathon_server_2: "{{ hostvars[groups['mesos'][1]].ansible_host }}"
+marathon_server_3: "{{ hostvars[groups['mesos'][2]].ansible_host }}"
+mesos_server_name_1: "mesos1"
+mesos_server_name_2: "mesos2"
+mesos_server_name_3: "mesos3"

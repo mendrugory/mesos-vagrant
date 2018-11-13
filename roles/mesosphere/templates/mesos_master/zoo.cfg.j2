@@ -1,0 +1,10 @@
+tickTime=2000
+dataDir=/etc/zookeeper/conf
+initLimit=10
+syncLimit=5
+
+clientPort=2181
+
+server.1={{ mesos_server_1 }}:2888:3888
+server.2={{ mesos_server_2 }}:2888:3888
+server.3={{ mesos_server_3 }}:2888:3888

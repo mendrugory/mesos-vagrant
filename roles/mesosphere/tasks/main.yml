@@ -1,0 +1,6 @@
+---
+# tasks file for mesosphere 
+
+- include: install.yml
+- include: configure.yml
+- include: service.yml

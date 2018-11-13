@@ -1,0 +1,48 @@
+---
+# Installing Mesosphere package in 3 nodes
+
+# - name: Installing Mesosphere package in server 1
+#   hosts: mesos1
+#   become: yes
+#   roles:
+#     - role: mesosphere
+#       myid: 1
+#       quorum: 2
+#       ip: "{{ hostvars[groups['mesos'][0]].ansible_host }}"
+
+- name: Installing Mesosphere package in server 2
+  hosts: mesos2
+  become: yes
+  roles:
+    - role: mesosphere
+      myid: 2
+      quorum: 2      
+      ip: "{{ hostvars[groups['mesos'][1]].ansible_host }}"
+
+- name: Installing Mesosphere package in server 3
+  hosts: mesos3
+  become: yes
+  roles:
+    - role: mesosphere
+      myid: 3
+      quorum: 2   
+      ip: "{{ hostvars[groups['mesos'][2]].ansible_host }}"
+
+- name: Installing Docker
+  hosts: mesos
+  become: yes
+  roles:
+    - role: docker
+
+- name: Starting
+  hosts: mesos
+  become: yes
+  tasks:
+    - name: Restarting Zookeeper
+      service: name=zookeeper state=started
+    - name: Restarting Mesos Master
+      service: name=mesos-master state=started
+    - name: Restarting Mesos Slave
+      service: name=mesos-slave state=started      
+    - name: Restarting Marathon
+      service: name=marathon state=started            
